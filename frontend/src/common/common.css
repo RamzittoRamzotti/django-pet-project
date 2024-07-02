@@ -1,0 +1,16 @@
+header {
+    width: 100%;
+    color: burlywood;
+    height: 200px;
+}
+footer {
+    width: 100%;
+    color: burlywood;
+    height: 150px;
+}
+.fixed-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+}
