@@ -1,0 +1,47 @@
+.loginForm {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loginForm > form {
+    width: 100%;
+}
+
+.formContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.formContainerButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-new {
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    color: white;
+    transition: .2s linear;
+    background: #0B63F6;
+}
+
+.btn-new:hover {
+    box-shadow: #003CC5 0 0px 0px 40px inset;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 800px;
+
+}
