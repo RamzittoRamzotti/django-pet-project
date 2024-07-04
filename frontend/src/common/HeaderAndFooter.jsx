@@ -1,35 +1,43 @@
 import "./common.css"
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useState} from "react";
+import { useEffect } from "react";
 
 export function Header() {
     const [isStaff, setIsStaff] = useState(false);
-    const [username, setUsername] = useState(false);
+    const [username, setUsername] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const id = localStorage.getItem("id");
 
     const getHeader = async () => {
         try {
-            const response = await fetch("http://localhost:8000/auths/", {
+            const response = await fetch(`http://localhost:8000/auth/${id}/`, {
                 method: "GET",
                 credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 }
-            })
+            });
             const data = await response.json();
             if (response.status === 200) {
                 setIsStaff(data.is_staff);
-                setUsername(data.username)
-            } else {
-                throw new Error(data.detail)
+                setUsername(data.username);
+            } else if (response.status !== 403) {
+                throw new Error(data.detail);
             }
-
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
-    getHeader();
+    useEffect(() => {
+        if (id) {
+            getHeader();
+        }
+    }, [location, id]); // обновление при изменении URL или ID пользователя
+
     return (
         <header>
             <div className="headerContainer">
@@ -37,28 +45,37 @@ export function Header() {
                     Доска объявлений
                 </div>
                 {username && <div className="links">
-                    <p><Link>...</Link></p>
-                    <p><Link>...</Link></p>
+                    <p> ...</p>
+                    <p>...</p>
                 </div>}
                 <div className="side-buttons">
                     {isStaff && (
-                        <p className="admin-button">
-                            <Link to="/admin" className="admin-button-text ">
-                                Админка
-                            </Link>
-                        </p>)}
-                    {username && <p className="logout-button">
-                        <Link to='/logout' className="logout-button-text">
+                        <p onClick={() => navigate('/admin')} className="admin-button">
+                            Админка
+                        </p>
+                    )}
+                    {username ? (
+                        <p onClick={() => navigate('/logout')} className="logout-button">
                             Выйти
-                        </Link>
-                    </p>}
+                        </p>
+                    ) : (
+                        location.pathname !== "/register" ? (
+                            <p className="signup-button" onClick={() => navigate("/register")}>
+                                Зарегистрироваться
+                            </p>
+                        ) : (
+                            <p className="back-button" onClick={() => navigate('/auth')}>
+                                <span className="back-button-text">
+                                    Назад
+                                </span>
+                            </p>
+                        )
+                    )}
                 </div>
-
             </div>
         </header>
     );
 }
-
 export function Footer() {
     return (
         <footer>
@@ -70,7 +87,7 @@ export function Footer() {
                               rel="noreferrer"
                               className="github-link-text">django-pet-project</Link>
                     </div>
-                    <div>
+                    <div className="footer-data">
                         <p>by ramzittoramzotti</p>
                     </div>
                 </div>

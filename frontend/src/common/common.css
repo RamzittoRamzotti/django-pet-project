@@ -1,7 +1,7 @@
 header {
     width: 100%;
     background-color: burlywood;
-    height: 100px;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -10,12 +10,18 @@ header {
 footer {
     width: 100%;
     background-color: burlywood;
-    height: 80px;
+    height: 8%;
 }
-
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .fixed-container {
     display: flex;
     height: 100%;
+
+    width: 100%;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
@@ -40,6 +46,7 @@ footer {
 .github-link:hover {
     background-color: white;
     color: #010203;
+    text-decoration: none;
 }
 
 .github-link-text {
@@ -83,15 +90,20 @@ footer {
 .admin-button:hover {
     background-color: white;
     color: #010203;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.admin-button-text {
+.admin-button > p:hover  {
+    color: #010203;
+    text-decoration: none;
+    cursor: pointer;
+}
+.admin-button > p {
+    padding: 0;
+    margin: 0;
     color: white;
     text-decoration: none;
-}
-
-.admin-button:hover .admin-button-text {
-    color: #010203;
 }
 
 .logo {
@@ -105,7 +117,14 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding: 0;
 }
+.side-buttons > p {
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+}
+
 
 .logout-button {
     display: flex;
@@ -125,15 +144,19 @@ footer {
 .logout-button:hover {
     background-color: white;
     color: #010203;
+    cursor: pointer;
 }
 
-.logout-button-text {
+.logout-button > p:hover  {
+    color: #010203;
+    text-decoration: none;
+    cursor: pointer;
+}
+.logout-button > p {
+    padding: 0;
+    margin: 0;
     color: white;
     text-decoration: none;
-}
-
-.logout-button:hover .logout-button-text {
-    color: #010203;
 }
 
 .headerContainer {
@@ -144,3 +167,89 @@ footer {
     max-width: 1800px;
 
 }
+.signup-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: gold;
+    color: black;
+    transition: .5s;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.signup-button:hover {
+    background-color: white;
+    color: #010203;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.signup-button > p:hover  {
+    color: #010203;
+}
+.signup-button > p {
+    padding: 0;
+    margin: 0;
+    color: black;
+    text-decoration: none;
+}
+.back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: orangered;
+    color: black;
+    transition: .5s;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.back-button:hover {
+    background-color: red;
+    color: #010203;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.backback-button > p:hover  {
+    color: #010203;
+}
+.back-button > p {
+    padding: 0;
+    margin: 0;
+    color: black;
+    text-decoration: none;
+}
+.footer-data{
+    margin:0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-data > p{
+    padding: 0;
+    margin: 0;
+}
+.fixed-container-main{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1800px;
+}
+
