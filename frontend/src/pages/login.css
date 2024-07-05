@@ -42,14 +42,15 @@ button {
     }
 
 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 770px;
-    height: 82%;
-}
+    main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px;
+        background: #f9f9f9;
+      }
 .fixed-container-login{
     margin-top: 100px;
 }

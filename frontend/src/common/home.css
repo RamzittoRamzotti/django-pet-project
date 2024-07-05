@@ -1,0 +1,119 @@
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background: #f9f9f9;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .fixed-container-main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .fixed-container-main h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .ad-carousel {
+    position: relative;
+    width: 100%;
+  }
+  
+  .slick-slider, .slick-list, .slick-track {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .ad-slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .ad-slide ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .ad-slide li {
+    margin: 10px 0;
+  }
+  
+  /* Стили для заголовка объявления */
+  .ads-topic {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для изображений */
+  .slider-img {
+    max-width: 60%;
+    margin: 0 auto;
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Пример стилизации для текста объявления */
+  .ad-slide p {
+    color: #555;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+  
+
+  /* Адаптивные стили */
+  @media (max-width: 768px) {
+    .fixed-container-main {
+      padding: 10px;
+    }
+  
+    .fixed-container-main h1 {
+      font-size: 2em;
+    }
+  
+    .ad-slide {
+      padding: 10px;
+      height: auto; /* Обеспечить адаптацию высоты слайдов на мобильных устройствах */
+    }
+  
+    .ads-topic {
+      font-size: 1.2em;
+    }
+  }
+  
+  /* Стили для стрелок прокрутки */
+  .slick-prev:before, .slick-next:before {
+    color: black;
+  }

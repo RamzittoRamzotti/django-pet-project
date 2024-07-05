@@ -1,7 +1,7 @@
 import "./common.css"
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useState} from "react";
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 export function Header() {
     const [isStaff, setIsStaff] = useState(false);
@@ -41,14 +41,17 @@ export function Header() {
     return (
         <header>
             <div className="headerContainer">
-                <div className="logo">
+                <div className="logo" onClick={() => navigate("")}>
                     Доска объявлений
                 </div>
                 {username && <div className="links">
-                    <p> ...</p>
-                    <p>...</p>
+                    <p id="find-link">Найти объявления</p>
+                    <p>Создать объявление</p>
                 </div>}
                 <div className="side-buttons">
+                    <p onClick={() => navigate('/view')} className="view-button">
+                        Ваши объявления
+                    </p>
                     {isStaff && (
                         <p onClick={() => navigate('/admin')} className="admin-button">
                             Админка
@@ -76,6 +79,7 @@ export function Header() {
         </header>
     );
 }
+
 export function Footer() {
     return (
         <footer>

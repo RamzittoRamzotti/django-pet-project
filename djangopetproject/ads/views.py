@@ -11,12 +11,12 @@ class AdsViewSet(viewsets.ModelViewSet, generics.ListAPIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
     serializer_class = AdsSerializer
-    pagination_class = PageNumberPagination
+
     queryset = Advert.objects.all()
 
     def list(self, request):
         queryset = Advert.objects.all()
-        queryset_filtered = queryset.order_by('datetime')
+        queryset_filtered = queryset.filter(is_approved=True).order_by('datetime')
         serializer = AdsSerializer(queryset_filtered, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
