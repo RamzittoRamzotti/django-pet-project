@@ -41,26 +41,31 @@ export function Header() {
     return (
         <header>
             <div className="headerContainer">
-                <div className="logo" onClick={() => navigate("")}>
+                <div className="logo" onClick={() => navigate("/")}>
                     Доска объявлений
                 </div>
                 {username && <div className="links">
                     <p id="find-link">Найти объявления</p>
-                    <p>Создать объявление</p>
+                    <p onClick={() => {
+                        navigate('/createads')
+                    }}>Создать объявление</p>
                 </div>}
                 <div className="side-buttons">
-                    <p onClick={() => navigate('/view')} className="view-button">
-                        Ваши объявления
-                    </p>
+
                     {isStaff && (
                         <p onClick={() => navigate('/admin')} className="admin-button">
                             Админка
                         </p>
                     )}
                     {username ? (
-                        <p onClick={() => navigate('/logout')} className="logout-button">
-                            Выйти
-                        </p>
+                        <>
+                            <p onClick={() => navigate('/view')} className="view-button">
+                                Ваши объявления
+                            </p>
+                            <p onClick={() => navigate('/logout')} className="logout-button">
+                                Выйти
+                            </p>
+                        </>
                     ) : (
                         location.pathname !== "/register" ? (
                             <p className="signup-button" onClick={() => navigate("/register")}>

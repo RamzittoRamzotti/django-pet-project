@@ -8,9 +8,11 @@ import {RequireAuth, RequireUnAuth} from './common/Common';
 import {Home} from './common/Home'
 import {Login} from './pages/Login';
 import {Logout} from "./pages/Logout";
-import { Register } from './pages/Register';
-import { Admin } from './pages/Admin';
-import { useState } from 'react';
+import {Register} from './pages/Register';
+import {Admin} from './pages/Admin';
+import {useState} from 'react';
+import CreateAds from "./pages/create/Create";
+import ViewAds from "./pages/Ads";
 
 const Router = createBrowserRouter([
     {
@@ -22,7 +24,7 @@ const Router = createBrowserRouter([
                 <Footer/>
             </>
         )
-    },    
+    },
     {
         path: '/admin',
         element: (
@@ -40,7 +42,7 @@ const Router = createBrowserRouter([
                 <Footer/>
             </>
         )
-    }, 
+    },
     {
         path: '/logout',
         element: (
@@ -55,6 +57,26 @@ const Router = createBrowserRouter([
             <>
                 <Header/>
                 <RequireUnAuth><Register/></RequireUnAuth>
+                <Footer/>
+            </>
+        )
+    },
+    {
+        path: '/createads',
+        element: (
+            <>
+                <Header/>
+                <RequireAuth><CreateAds/></RequireAuth>
+                <Footer/>
+            </>
+        )
+    },
+    {
+        path: '/viewads',
+        element: (
+            <>
+                <Header/>
+                <RequireAuth><ViewAds/></RequireAuth>
                 <Footer/>
             </>
         )

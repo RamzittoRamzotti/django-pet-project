@@ -13,7 +13,7 @@ export function Home() {
     useEffect(() => {
         const request = async () => {
             try {
-                const response = await fetch('http://localhost:8000/ads/?page=5&offset=1', {
+                const response = await fetch('http://localhost:8000/ads/?limit=5&offset=0', {
                     method: "GET",
                     credentials: `include`,
                     headers: {
@@ -22,7 +22,7 @@ export function Home() {
                 });
                 const data = await response.json()
                 if (response.status === 200) {
-                    setAds(data);
+                    setAds(data.results);
                 }
             } catch (error) {
                 console.log(error)
@@ -36,7 +36,7 @@ export function Home() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 3000,
         // adaptiveHeight: true
     };
@@ -49,17 +49,17 @@ export function Home() {
                         ads.map(ad => (
                             <div className="ad-slide" key={ad.id}>
                                 <ul>
-                                    <li className="ads-topic">{ad.topic}</li>
-                                    <li><img className="slider-img" src={`http://localhost:8000${ad.image}`}
+                                    <li className="ads-topic">{ad.display_topic}</li>
+                                    <li><img className="slider-img" src={ad.image}
                                              alt={ad.name}/></li>
                                     <li>{ad.name}</li>
                                     <li>{ad.description}</li>
-                                    <li>{ad.user}</li>
+                                    <li>Объявитель: {ad.user}</li>
                                 </ul>
                             </div>
                         ))
                     ) : (
-                        <div>Loading...</div> // Добавление индикатора загрузки
+                        <div>Loading...</div>
                     )}
                 </Slider>
             </div>

@@ -6,9 +6,16 @@ from djangopetproject import settings
 
 
 class Advert(models.Model):
-    topic = models.CharField(max_length=100)
+    CHOICES = (
+        ("cars", "Машины"),
+        ("real_estate", "Недвижимость"),
+        ("appliances", "Бытовая техника"),
+        ("clothing", "Одежда"),
+        ("other", "Другое"),
+    )
+    topic = models.CharField(max_length=30, choices=CHOICES)
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length=500)
     datetime = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='ads/images/', null=True)
     user = ForeignKey(User, on_delete=models.CASCADE, related_name="ads")
