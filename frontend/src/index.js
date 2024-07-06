@@ -4,10 +4,15 @@ import './index.css';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import {Footer, Header} from "./common/HeaderAndFooter";
-import {RequireAuth} from './common/Common';
+import {RequireAuth, RequireUnAuth} from './common/Common';
 import {Home} from './common/Home'
 import {Login} from './pages/Login';
 import {Logout} from "./pages/Logout";
+import {Register} from './pages/Register';
+import {Admin} from './pages/Admin';
+import {useState} from 'react';
+import CreateAds from "./pages/create/Create";
+import ViewAds from "./pages/Ads";
 
 const Router = createBrowserRouter([
     {
@@ -15,8 +20,16 @@ const Router = createBrowserRouter([
         element: (
             <>
                 <Header/>
-                <Login/>
+                <RequireUnAuth><Login/></RequireUnAuth>
                 <Footer/>
+            </>
+        )
+    },
+    {
+        path: '/admin',
+        element: (
+            <>
+                <Admin/>
             </>
         )
     },
@@ -29,11 +42,42 @@ const Router = createBrowserRouter([
                 <Footer/>
             </>
         )
-    }, {
+    },
+    {
         path: '/logout',
         element: (
             <>
                 <Logout/>
+            </>
+        )
+    },
+    {
+        path: '/register',
+        element: (
+            <>
+                <Header/>
+                <RequireUnAuth><Register/></RequireUnAuth>
+                <Footer/>
+            </>
+        )
+    },
+    {
+        path: '/createads',
+        element: (
+            <>
+                <Header/>
+                <RequireAuth><CreateAds/></RequireAuth>
+                <Footer/>
+            </>
+        )
+    },
+    {
+        path: '/viewads',
+        element: (
+            <>
+                <Header/>
+                <RequireAuth><ViewAds/></RequireAuth>
+                <Footer/>
             </>
         )
     },

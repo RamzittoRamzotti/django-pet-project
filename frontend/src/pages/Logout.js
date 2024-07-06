@@ -4,17 +4,15 @@ export function Logout() {
 
     let navigate = useNavigate();
     const logout = async () => {
-        const response = await fetch('http://localhost:8000/auths/logout/', {
+        const response = await fetch('http://localhost:8000/auth/logout/', {
             method: 'GET',
             credentials: "include",
         });
         const data = await response.json();
-        if (response.status === 200) {
-            console.log(data);
-            navigate('/auth');
-        } else {
-            alert(data.detail);
-        }
+        console.log(data);
+        localStorage.clear();
+        navigate('/auth');
+        
     }
     logout();
 }
