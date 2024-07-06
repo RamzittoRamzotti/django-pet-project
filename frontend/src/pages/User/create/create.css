@@ -19,6 +19,9 @@
 }
 
 .pop {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     justify-content: center;
     align-items: center;
@@ -28,6 +31,10 @@
     width: 400px;
     height: 200px;
     transition: .3s;
+}
+
+.pop button {
+    margin: 10px 0;
 }
 
 .fixed-container-main > h2 {

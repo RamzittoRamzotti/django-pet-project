@@ -59,7 +59,8 @@ export default function CreateAds() {
             <div className="popup-container">
                 {data.detail && (
                     <div className="pop">
-                        {data.detail}<br/>
+                        Объявление отправлено на модерацию<br/>
+                        После рассмотрения добавится в объявлениях<br/>
                         <button onClick={() => {
                             let cont = document.querySelector(".popup-container");
                             cont.style.display = "none";

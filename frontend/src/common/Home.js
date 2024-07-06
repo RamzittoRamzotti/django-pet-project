@@ -13,7 +13,7 @@ export function Home() {
     useEffect(() => {
         const request = async () => {
             try {
-                const response = await fetch('http://localhost:8000/ads/?limit=5&offset=0', {
+                const response = await fetch('http://localhost:8000/ads/startads/?limit=5&offset=0', {
                     method: "GET",
                     credentials: `include`,
                     headers: {

@@ -78,9 +78,8 @@ main {
 .slider-img {
     max-width: 60%;
     margin: 0 auto;
-    width: 400px;
-    height: auto;
-    max-height: 400px;
+    width: auto;
+    max-height: 300px;
     border-radius: 10px;
 }
 

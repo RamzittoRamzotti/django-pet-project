@@ -1,0 +1,9 @@
+.fixed-container-main {
+    display: flex;
+    position: relative;
+    height: 100%;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: flex-start;
+    align-items: center;
+}

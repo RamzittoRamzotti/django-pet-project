@@ -9,4 +9,7 @@ from ads import views
 router = routers.DefaultRouter()
 router.register('', views.AdsViewSet, basename='ads')
 
-urlpatterns = [] + router.urls
+urlpatterns = [
+    path('startads/', views.AdsStartPageView.as_view(), name='startads'),
+    path('', include(router.urls)),
+]
