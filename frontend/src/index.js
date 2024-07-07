@@ -11,8 +11,9 @@ import {Logout} from "./pages/Logout";
 import {Register} from './pages/Register';
 import {Admin} from './pages/Admin';
 import {useState} from 'react';
-import CreateAds from "./pages/create/Create";
-import ViewAds from "./pages/Ads";
+import CreateAds from "./pages/User/create/Create";
+import ViewAds from "./pages/User/view/view";
+
 
 const Router = createBrowserRouter([
     {

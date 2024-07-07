@@ -18,7 +18,7 @@ class Advert(models.Model):
     description = models.TextField(max_length=500)
     datetime = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='ads/images/', null=True)
-    user = ForeignKey(User, on_delete=models.CASCADE, related_name="ads")
+    user = ForeignKey(User, on_delete=models.CASCADE, related_name="adverts")
     is_approved = models.BooleanField(default=False)
 
     @property

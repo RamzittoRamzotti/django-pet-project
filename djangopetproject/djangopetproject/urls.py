@@ -23,7 +23,7 @@ from djangopetproject import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('authentication.urls')),
-    path('ads/', include('ads.urls')),
+    path('', include('ads.urls')),
 ]
 if settings.DEBUG:
     urlpatterns.extend(

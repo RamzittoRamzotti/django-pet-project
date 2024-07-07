@@ -94,7 +94,6 @@ body {
 
 .ads-list-container {
     margin-top: 20px;
-    min-height: 550px;
     width: 100%;
     display: flex;
     flex-direction: column;

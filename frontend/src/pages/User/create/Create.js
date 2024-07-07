@@ -1,7 +1,7 @@
 import "./create.css";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {getCookie} from "../../common/Common";
+import {getCookie} from "../../../common/Common";
 
 export default function CreateAds() {
     let navigate = useNavigate();

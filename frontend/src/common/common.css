@@ -312,3 +312,17 @@ footer {
     align-items: center;
 }
 
+.username-block {
+    display: flex;
+    width: 100px;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.username-block > p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+

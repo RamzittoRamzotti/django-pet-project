@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import "./view.css";
+import "./useview.css";
 
 export default function ViewAds() {
     const [text, setText] = useState('');
@@ -133,7 +133,7 @@ export default function ViewAds() {
                             </div>
                         ))
                     ) : (
-                        <div style={{height: 100 + '%'}}>Нет объявлений</div>
+                        <div>Loading...</div>
                     )}
                 </div>
                 <div className="buttons-container">

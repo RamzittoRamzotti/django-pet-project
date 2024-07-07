@@ -7,7 +7,8 @@ from rest_framework import routers
 from ads import views
 
 router = routers.DefaultRouter()
-router.register('', views.AdsViewSet, basename='ads')
+router.register('userads', views.UserAdsViewSet, basename='userads')
+router.register('ads', views.AdsViewSet, basename='ads')
 
 urlpatterns = [
     path('startads/', views.AdsStartPageView.as_view(), name='startads'),

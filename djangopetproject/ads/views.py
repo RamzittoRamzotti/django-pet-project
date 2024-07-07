@@ -1,12 +1,11 @@
+from django.contrib.auth.models import User
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, generics, status
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.generics import ListAPIView, GenericAPIView
-from rest_framework.mixins import ListModelMixin
-from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.viewsets import GenericViewSet
+from rest_framework import filters
+from rest_framework.viewsets import ModelViewSet
 
 from ads.models import Advert
 from ads.serializers import AdsSerializer
@@ -15,6 +14,8 @@ from ads.serializers import AdsSerializer
 class AdsViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = AdsSerializer
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name', 'description']
     filterset_fields = ['topic']
 
     def get_queryset(self):
@@ -27,7 +28,6 @@ class AdsViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(page, many=True)
         if page is not None:
             return self.get_paginated_response(serializer.data)
-        # serializer = self.get_serializer(queryset_filtered, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request, *args, **kwargs):
@@ -40,9 +40,6 @@ class AdsViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"detail": f"{e.args}"}, status=400)
 
-    def perform_create(self, serializer):
-        serializer.save()
-
 
 class AdsStartPageView(ListAPIView):
     serializer_class = AdsSerializer
@@ -50,3 +47,25 @@ class AdsStartPageView(ListAPIView):
 
     def get_queryset(self):
         return Advert.objects.filter(is_approved=True).order_by('-datetime')
+
+
+class UserAdsViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = AdsSerializer
+    lookup_field = 'pk'
+
+    def get_queryset(self):
+        return self.request.user.adverts.all()
+
+# class DestroyUserView(DestroyAPIView):
+#     permission_classes = [IsAuthenticated]
+#     serializer_class = AdsSerializer
+#     lookup_field = 'id'
+#
+#     def destroy(self, request, *args, **kwargs):
+#         instance = self.get_object()
+#         self.perform_destroy(instance)
+#         return Response(status=status.HTTP_204_NO_CONTENT)
+#
+#     def get_queryset(self):
+#         return self.request.user.adverts.all()

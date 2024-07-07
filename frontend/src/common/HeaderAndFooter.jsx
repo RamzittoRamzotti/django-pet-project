@@ -45,13 +45,18 @@ export function Header() {
                     Доска объявлений
                 </div>
                 {username && <div className="links">
-                    <p id="find-link">Найти объявления</p>
+                    <p id="find-link" onClick={() => {
+                        navigate('/viewads')
+                    }}>Найти объявления</p>
                     <p onClick={() => {
                         navigate('/createads')
                     }}>Создать объявление</p>
                 </div>}
                 <div className="side-buttons">
-
+                    <div className="username-block">
+                        <p>Добро, пожаловать!</p>
+                        <p>{username}</p>
+                    </div>
                     {isStaff && (
                         <p onClick={() => navigate('/admin')} className="admin-button">
                             Админка
