@@ -11,7 +11,7 @@ from ads.models import Advert
 from ads.serializers import AdsSerializer
 
 
-class AdsViewSet(viewsets.ModelViewSet):
+class AdsViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = AdsSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
@@ -51,6 +51,9 @@ class AdsStartPageView(ListAPIView):
 
 class UserAdsViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name', 'description']
+    filterset_fields = ['topic']
     serializer_class = AdsSerializer
     lookup_field = 'pk'
 

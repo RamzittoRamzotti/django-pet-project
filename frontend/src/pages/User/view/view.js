@@ -4,7 +4,8 @@ import "./view.css";
 export default function ViewAds() {
     const [text, setText] = useState('');
     const [data, setData] = useState({results: [], previous: null, next: null});
-    const [topic, setTopic] = useState(''); // Состояние для выбранной радиокнопки
+    const [topic, setTopic] = useState('');
+    const [limit, setLimit] = useState('');
 
     useEffect(() => {
         const StartView = async () => {
@@ -22,7 +23,19 @@ export default function ViewAds() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`http://localhost:8000/ads/?limit=5&search=${text}&topic=${topic}`, {
+        let url = "http://localhost:8000/ads/";
+        if (limit) {
+            url += `?limit=${limit}`;
+        } else {
+            url += `?limit=5`;
+        }
+        if (text) {
+            url += `&search=${text}`;
+        }
+        if (topic) {
+            url += `&topic=${topic}`;
+        }
+        const response = await fetch(url, {
             method: "GET",
             credentials: 'include'
         });
@@ -30,7 +43,7 @@ export default function ViewAds() {
         if (response.status === 200) {
             setData(res);
         }
-        setTopic(''); // Сброс выбранной радиокнопки после поиска
+        setTopic('');
     }
 
     const fetchLists = async (url) => {
@@ -116,7 +129,18 @@ export default function ViewAds() {
                                 />
                                 <span className="radio-label">Другое</span>
                             </label>
+                            {/*<div className='form-group'>*/}
+
+                            <select className="select2-container" style={{marginLeft: 10 + "px"}} value={limit}
+                                    onChange={(e) => setLimit(e.target.value)}>
+                                <option value="5">Количество обяъвлений на странице</option>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                            </select>
+                            {/*</div>*/}
                         </div>
+
                     </div>
                 </form>
                 <div className="ads-list-container">

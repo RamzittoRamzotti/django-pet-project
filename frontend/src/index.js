@@ -13,8 +13,8 @@ import {Admin} from './pages/Admin';
 import {useState} from 'react';
 import CreateAds from "./pages/User/create/Create";
 import ViewAds from "./pages/User/view/view";
-
-
+import {ViewUserAds} from "./pages/User/userview/userview"
+import {UpdateUserAds} from "./pages/User/update/UpdateDelete"
 const Router = createBrowserRouter([
     {
         path: '/auth',
@@ -78,6 +78,24 @@ const Router = createBrowserRouter([
             <>
                 <Header/>
                 <RequireAuth><ViewAds/></RequireAuth>
+                <Footer/>
+            </>
+        )
+    },    {
+        path: '/viewuserads',
+        element: (
+            <>
+                <Header/>
+                <RequireAuth><ViewUserAds/></RequireAuth>
+                <Footer/>
+            </>
+        )
+    }, {
+        path: '/updateuserads/:ad_id',
+        element: (
+            <>
+                <Header/>
+                <RequireAuth><UpdateUserAds/></RequireAuth>
                 <Footer/>
             </>
         )

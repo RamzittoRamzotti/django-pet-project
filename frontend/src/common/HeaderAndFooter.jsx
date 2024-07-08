@@ -36,7 +36,7 @@ export function Header() {
         if (id) {
             getHeader();
         }
-    }, [location, id]); // обновление при изменении URL или ID пользователя
+    }, [location, id]);
 
     return (
         <header>
@@ -64,7 +64,7 @@ export function Header() {
                     )}
                     {username ? (
                         <>
-                            <p onClick={() => navigate('/view')} className="view-button">
+                            <p onClick={() => navigate('/viewuserads')} className="view-button">
                                 Ваши объявления
                             </p>
                             <p onClick={() => navigate('/logout')} className="logout-button">
